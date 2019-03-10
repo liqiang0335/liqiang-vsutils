@@ -1,0 +1,111 @@
+{
+  "name": "liqiang-vsutils",
+  "displayName": "liqiang-vsutils",
+  "description": "some tool for work",
+  "version": "0.0.1",
+  "publisher": "liqiang0335",
+  "author": "liqiang0335 <liqiang0335@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/liqiang0335/liqiang-vsutils/issues",
+    "email": "liqiang0335@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liqiang0335/liqiang-vsutils.git"
+  },
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon.jpg",
+  "keywords": [
+    "liqiang"
+  ],
+  "activationEvents": [
+    "onCommand:liqiang.createJson",
+    "onCommand:liqiang.fileFactory",
+    "onCommand:liqiang.createSameNameFile"
+  ],
+  "main": "./src/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "liqiang",
+      "properties": {
+        "liqiang.jsonName": {
+          "description": "JSON:文件名称",
+          "type": "string",
+          "default": "__db__"
+        },
+        "liqiang.jsonIgnore": {
+          "description": "JSON:忽略文件夹",
+          "type": "string",
+          "default": "(src|dist|images?|style|script)"
+        },
+        "liqiang.styleFileType": {
+          "description": "同名文件:文件类型",
+          "type": "string",
+          "default": "scss",
+          "enum": ["css", "scss", "less"]
+        }
+      }
+    },
+    "commands": [{
+        "command": "liqiang.fileFactory",
+        "title": "加工文件"
+      },
+      {
+        "command": "liqiang.createJson",
+        "title": "生成JSON文件"
+      },
+      {
+        "command": "liqiang.createSameNameFile",
+        "title": "创建同名文件"
+      }
+    ],
+    "keybindings": [{
+        "command": "liqiang.fileFactory",
+        "key": "ctrl+y ctrl+c"
+      },
+      {
+        "command": "liqiang.createSameNameFile",
+        "key": "ctrl+y ctrl+n"
+      }
+    ],
+    "menus": {
+      "editor/context": [{
+        "command": "liqiang.fileFactory"
+      }],
+      "explorer/context": [{
+          "command": "liqiang.createSameNameFile",
+          "group": "liqiang-@1"
+        },
+        {
+          "command": "liqiang.fileFactory",
+          "group": "liqiang-@2"
+        },
+        {
+          "command": "liqiang.createJson",
+          "group": "liqiang-@3"
+        }
+      ]
+    },
+    "snippets": []
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.21",
+    "eslint": "^4.11.0",
+    "@types/node": "^8.10.25",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "copy-paste": "^1.3.0"
+  }
+}
