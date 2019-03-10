@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for work",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -21,6 +21,7 @@
   "activationEvents": [
     "onCommand:liqiang.createJson",
     "onCommand:liqiang.fileFactory",
+    "onCommand:liqiang.createIndexFiles",
     "onCommand:liqiang.createSameNameFile"
   ],
   "main": "./src/extension",
@@ -58,6 +59,10 @@
       {
         "command": "liqiang.createSameNameFile",
         "title": "创建同名文件"
+      },
+      {
+        "command": "liqiang.createIndexFiles",
+        "title": "创建Index文件"
       }
     ],
     "keybindings": [{
@@ -84,6 +89,10 @@
         {
           "command": "liqiang.createJson",
           "group": "liqiang-@3"
+        },
+        {
+          "command": "liqiang.createIndexFiles",
+          "group": "liqiang-@4"
         }
       ]
     },
