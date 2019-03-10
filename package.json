@@ -6,12 +6,7 @@
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
-    "url": "https://github.com/liqiang0335/liqiang-vsutils/issues",
     "email": "liqiang0335@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/liqiang0335/liqiang-vsutils.git"
   },
   "engines": {
     "vscode": "^1.28.0"
@@ -19,7 +14,7 @@
   "categories": [
     "Other"
   ],
-  "icon": "icon.jpg",
+  "icon": "icon.png",
   "keywords": [
     "liqiang"
   ],
