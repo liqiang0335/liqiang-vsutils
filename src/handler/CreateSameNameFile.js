@@ -13,7 +13,7 @@ module.exports = async function(URI) {
     file() {
       const dirname = path.dirname(filePath);
       const name = path.basename(filePath).match(/^\w+/)[0];
-      const config = vscode.workspace.getConfiguration("ynw");
+      const config = vscode.workspace.getConfiguration("liqiang");
       const ext = config.get("styleFileType");
       const fullName = name + "." + ext;
       const target = path.join(dirname, fullName);

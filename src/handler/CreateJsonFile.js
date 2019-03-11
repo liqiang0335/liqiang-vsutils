@@ -3,7 +3,7 @@ const path = require("path");
 const utils = require("./util");
 const fs = require("fs");
 
-const config = vscode.workspace.getConfiguration("ynw");
+const config = vscode.workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
 const jsonName = config.get("jsonName") + ".json";
 
