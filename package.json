@@ -1,7 +1,7 @@
 {
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
-  "description": "some tool for work",
+  "description": "some tool for me",
   "version": "0.2.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
@@ -21,8 +21,7 @@
   "activationEvents": [
     "onCommand:liqiang.createJson",
     "onCommand:liqiang.fileFactory",
-    "onCommand:liqiang.createIndexFiles",
-    "onCommand:liqiang.createSameNameFile"
+    "onCommand:liqiang.createIndexFiles"
   ],
   "main": "./src/extension",
   "contributes": {
@@ -39,12 +38,6 @@
           "description": "JSON:忽略文件夹",
           "type": "string",
           "default": "(src|dist|images?|style|script)"
-        },
-        "liqiang.styleFileType": {
-          "description": "同名文件:文件类型",
-          "type": "string",
-          "default": "scss",
-          "enum": ["css", "scss", "less"]
         }
       }
     },
@@ -55,10 +48,6 @@
       {
         "command": "liqiang.createJson",
         "title": "生成JSON文件"
-      },
-      {
-        "command": "liqiang.createSameNameFile",
-        "title": "创建同名文件"
       },
       {
         "command": "liqiang.createIndexFiles",
@@ -79,10 +68,6 @@
         "command": "liqiang.fileFactory"
       }],
       "explorer/context": [{
-          "command": "liqiang.createSameNameFile",
-          "group": "liqiang-@1"
-        },
-        {
           "command": "liqiang.fileFactory",
           "group": "liqiang-@2"
         },
