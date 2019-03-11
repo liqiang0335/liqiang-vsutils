@@ -2,11 +2,15 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
     "email": "liqiang0335@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liqiang0335/liqiang-vsutils.git"
   },
   "engines": {
     "vscode": "^1.28.0"
