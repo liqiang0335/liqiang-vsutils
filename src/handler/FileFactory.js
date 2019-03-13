@@ -2,12 +2,7 @@ const vscode = require("vscode");
 const path = require("path");
 const util = require("./util");
 const { exec } = require("child_process");
-
-// const exec = (cmd, name) => {
-//   const terminal = vscode.window.createTerminal({ name });
-//   terminal.sendText(cmd);
-//   terminal.show(true);
-// };
+const { copy } = require("copy-paste");
 
 module.exports = async function(URI) {
   const { workspace, window } = vscode;
@@ -25,6 +20,7 @@ module.exports = async function(URI) {
 
   if (exist) {
     const cmd = `node ${handlerPath} ${util.toWinPath(selectPath)}`;
+    copy(cmd);
     exec(cmd, err => {
       if (err) {
         console.log(err);
