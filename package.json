@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -45,7 +45,8 @@
         }
       }
     },
-    "commands": [{
+    "commands": [
+      {
         "command": "liqiang.fileFactory",
         "title": "加工文件"
       },
@@ -58,7 +59,8 @@
         "title": "创建Index文件"
       }
     ],
-    "keybindings": [{
+    "keybindings": [
+      {
         "command": "liqiang.fileFactory",
         "key": "ctrl+y ctrl+c"
       },
@@ -68,10 +70,13 @@
       }
     ],
     "menus": {
-      "editor/context": [{
-        "command": "liqiang.fileFactory"
-      }],
-      "explorer/context": [{
+      "editor/context": [
+        {
+          "command": "liqiang.fileFactory"
+        }
+      ],
+      "explorer/context": [
+        {
           "command": "liqiang.fileFactory",
           "group": "liqiang-@2"
         },
