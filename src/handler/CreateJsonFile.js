@@ -40,6 +40,7 @@ function shouldIgnore(name, isDir) {
   const b = name == jsonName;
   const c = name == "node_modules";
   const d = name == "index.html";
+  //仅读取html文件
   const e = !isDir && !/\.html$/.test(name);
   return a || b || c || d || e;
 }
@@ -60,7 +61,7 @@ function gen(folder, inject) {
     const isPlain = isDir && fs.existsSync(bundlePath);
 
     const id = uuid();
-    result.push({ name, id, isDir, ...inject, isPlain });
+    result.push({ name, id, isDir, ...inject, isPlain, mtime: stat.mtimeMs });
     const rel = inject && inject.rel ? `${inject.rel}/${name}` : name;
 
     if (isDir) {
