@@ -23,6 +23,7 @@
     "liqiang"
   ],
   "activationEvents": [
+    "onCommand:liqiang.removeBlank",
     "onCommand:liqiang.createJson",
     "onCommand:liqiang.fileFactory",
     "onCommand:liqiang.createIndexFiles"
@@ -47,6 +48,10 @@
     },
     "commands": [
       {
+        "command": "liqiang.removeBlank",
+        "title": "删除剪贴板字符空格"
+      },
+      {
         "command": "liqiang.fileFactory",
         "title": "加工文件"
       },
@@ -60,6 +65,10 @@
       }
     ],
     "keybindings": [
+      {
+        "command": "liqiang.removeBlank",
+        "key": "ctrl+y ctrl+b"
+      },
       {
         "command": "liqiang.fileFactory",
         "key": "ctrl+y ctrl+c"
