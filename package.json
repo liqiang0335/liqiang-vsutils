@@ -46,8 +46,7 @@
         }
       }
     },
-    "commands": [
-      {
+    "commands": [{
         "command": "liqiang.removeBlank",
         "title": "删除剪贴板字符空格"
       },
@@ -64,28 +63,20 @@
         "title": "创建Index文件"
       }
     ],
-    "keybindings": [
-      {
+    "keybindings": [{
         "command": "liqiang.removeBlank",
         "key": "ctrl+y ctrl+b"
       },
       {
         "command": "liqiang.fileFactory",
         "key": "ctrl+y ctrl+c"
-      },
-      {
-        "command": "liqiang.createSameNameFile",
-        "key": "ctrl+y ctrl+n"
       }
     ],
     "menus": {
-      "editor/context": [
-        {
-          "command": "liqiang.fileFactory"
-        }
-      ],
-      "explorer/context": [
-        {
+      "editor/context": [{
+        "command": "liqiang.fileFactory"
+      }],
+      "explorer/context": [{
           "command": "liqiang.fileFactory",
           "group": "liqiang-@2"
         },
