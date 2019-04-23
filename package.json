@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -46,7 +46,8 @@
         }
       }
     },
-    "commands": [{
+    "commands": [
+      {
         "command": "liqiang.removeBlank",
         "title": "删除剪贴板字符空格"
       },
@@ -63,7 +64,8 @@
         "title": "创建Index文件"
       }
     ],
-    "keybindings": [{
+    "keybindings": [
+      {
         "command": "liqiang.removeBlank",
         "key": "ctrl+y ctrl+b"
       },
@@ -73,10 +75,13 @@
       }
     ],
     "menus": {
-      "editor/context": [{
-        "command": "liqiang.fileFactory"
-      }],
-      "explorer/context": [{
+      "editor/context": [
+        {
+          "command": "liqiang.fileFactory"
+        }
+      ],
+      "explorer/context": [
+        {
           "command": "liqiang.fileFactory",
           "group": "liqiang-@2"
         },
