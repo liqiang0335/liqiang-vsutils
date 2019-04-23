@@ -40,10 +40,10 @@ function shouldIgnore(name, isDir) {
   const b = name == jsonName;
   const c = name == "node_modules";
   const d = name == "index.html";
-  const e = name == "__index__.html";
   //仅读取html文件
   const e = !isDir && !/\.html$/.test(name);
-  return a || b || c || d || e;
+  const f = name == "__index__.html";
+  return a || b || c || d || e || f;
 }
 
 function gen(folder, inject) {
