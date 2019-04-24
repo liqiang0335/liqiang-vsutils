@@ -39,11 +39,9 @@ function shouldIgnore(name, isDir) {
   const a = ignoreReg.test(name);
   const b = name == jsonName;
   const c = name == "node_modules";
-  const d = name == "index.html";
-  //仅读取html文件
+  const d = /^_?index\.html$/.test(name);
   const e = !isDir && !/\.html$/.test(name);
-  const f = name == "__index__.html";
-  return a || b || c || d || e || f;
+  return a || b || c || d || e;
 }
 
 function gen(folder, inject) {
