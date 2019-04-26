@@ -32,7 +32,6 @@ module.exports = async function(URI) {
   gen(filePath, { rel: "", pid: "0" });
   await utils.writeFile(target, JSON.stringify(result));
   createIndexFile({ folder: filePath, jsonPath: target });
-  window.showInformationMessage("CreateJSON: OK");
 };
 
 async function createIndexFile({ folder }) {
