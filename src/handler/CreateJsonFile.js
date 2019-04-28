@@ -37,7 +37,7 @@ module.exports = async function(URI) {
 async function createIndexFile({ folder }) {
   const CONFIG_NAME = "_config.json";
   const CMD_NAME = "json-html";
-  const configPath = path.join(folder, CONFIG_NAME);
+  const configPath = path.join(folder, CONFIG_NAME).replace(/\\+/g, "\\\\");
   const cmd = `node ./_script/bookCreator/dist/index.bundle.js ${configPath}`;
   if (fs.existsSync(configPath)) {
     exec(cmd, CMD_NAME);
