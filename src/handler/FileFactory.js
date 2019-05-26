@@ -1,8 +1,12 @@
 const vscode = require("vscode");
 const path = require("path");
 const util = require("./util");
-const { exec } = require("child_process");
-const { copy } = require("copy-paste");
+
+const exec = (cmd, name) => {
+  const terminal = vscode.window.createTerminal({ name });
+  terminal.show(true);
+  terminal.sendText(cmd);
+};
 
 module.exports = async function(URI) {
   const { workspace, window } = vscode;
@@ -20,14 +24,7 @@ module.exports = async function(URI) {
 
   if (exist) {
     const cmd = `node ${handlerPath} ${util.toWinPath(selectPath)}`;
-    copy(cmd);
-    exec(cmd, err => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      window.showInformationMessage("File-Factory: OK");
-    });
+    exec(cmd, "file-factory");
   } else {
     window.showErrorMessage("File-Factory: Not Found!");
   }
