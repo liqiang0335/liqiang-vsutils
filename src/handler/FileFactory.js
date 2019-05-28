@@ -23,7 +23,7 @@ module.exports = async function(URI) {
   const exist = await util.exists(handlerPath);
 
   if (exist) {
-    const cmd = `node ${handlerPath} ${util.toWinPath(selectPath)}`;
+    const cmd = `node ${handlerPath} "${util.toWinPath(selectPath)}"`;
     exec(cmd, "file-factory");
   } else {
     window.showErrorMessage("File-Factory: Not Found!");
