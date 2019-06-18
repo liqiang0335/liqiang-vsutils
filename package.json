@@ -95,7 +95,24 @@
         }
       ]
     },
-    "snippets": []
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./src/snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./src/snippets.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./src/snippets.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./src/snippets.json"
+      }
+    ]
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
