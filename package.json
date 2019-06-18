@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.4.8",
+  "version": "0.5.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -26,7 +26,8 @@
     "onCommand:liqiang.removeBlank",
     "onCommand:liqiang.createJson",
     "onCommand:liqiang.fileFactory",
-    "onCommand:liqiang.createIndexFiles"
+    "onCommand:liqiang.createIndexFiles",
+    "onCommand:liqiang.createWXMFiles"
   ],
   "main": "./src/extension",
   "contributes": {
@@ -58,6 +59,10 @@
       {
         "command": "liqiang.createJson",
         "title": "生成JSON文件"
+      },
+      {
+        "command": "liqiang.createWXMFiles",
+        "title": "创建小程序文件"
       },
       {
         "command": "liqiang.createIndexFiles",
@@ -92,6 +97,10 @@
         {
           "command": "liqiang.createIndexFiles",
           "group": "liqiang-@4"
+        },
+        {
+          "command": "liqiang.createWXMFiles",
+          "group": "liqiang-@5"
         }
       ]
     },
