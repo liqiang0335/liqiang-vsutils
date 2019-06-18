@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -104,24 +104,7 @@
         }
       ]
     },
-    "snippets": [
-      {
-        "language": "javascript",
-        "path": "./src/snippets.json"
-      },
-      {
-        "language": "javascriptreact",
-        "path": "./src/snippets.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./src/snippets.json"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./src/snippets.json"
-      }
-    ]
+    "snippets": []
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
