@@ -1,9 +1,15 @@
-const vscode = require("vscode");
+const { window, workspace } = require("vscode");
 const path = require("path");
 const utils = require("./util");
 const fs = require("fs");
 
-const config = vscode.workspace.getConfiguration("liqiang");
+const exec = (cmd, name) => {
+  const terminal = window.createTerminal({ name });
+  terminal.show(true);
+  terminal.sendText(cmd);
+};
+
+const config = workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
 const jsonName = config.get("jsonName") + ".json";
 
@@ -18,19 +24,25 @@ const uuid = () => {
 module.exports = async function(URI) {
   const filePath = URI.fsPath;
   const stat = await utils.stat(filePath);
-  const isDir = stat.isDirectory();
-  if (isDir) {
-    result = [];
-    const target = path.join(filePath, jsonName);
-    gen(filePath, { rel: "", pid: "0" });
-
-    fs.writeFile(target, JSON.stringify(result), err => {
-      err
-        ? vscode.window.showErrorMessage("create JSON: Error")
-        : vscode.window.showInformationMessage("create JSON: OK");
-    });
+  if (!stat.isDirectory()) {
+    return;
   }
+  result = [];
+  const target = path.join(filePath, jsonName);
+  gen(filePath, { rel: "", pid: "0" });
+  await utils.writeFile(target, JSON.stringify(result));
+  createIndexFile({ folder: filePath, jsonPath: target });
 };
+
+async function createIndexFile({ folder }) {
+  const CONFIG_NAME = "_config.json";
+  const CMD_NAME = "json-html";
+  const configPath = path.join(folder, CONFIG_NAME).replace(/\\+/g, "\\\\");
+  const cmd = `node ./_script/bookCreator/dist/index.bundle.js ${configPath}`;
+  if (fs.existsSync(configPath)) {
+    exec(cmd, CMD_NAME);
+  }
+}
 
 const ignoreReg = new RegExp(jsonIgnore);
 function shouldIgnore(name, isDir) {
