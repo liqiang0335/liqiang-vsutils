@@ -3,6 +3,7 @@ const path = require("path");
 const utils = require("./util");
 const fs = require("fs");
 const { exec } = require("child_process");
+const { copy } = require("copy-paste");
 
 const config = workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
@@ -32,11 +33,17 @@ module.exports = async function(URI) {
 async function createIndexFile({ folder }) {
   const CONFIG_NAME = "_config.json";
   const configPath = path.join(folder, CONFIG_NAME).replace(/\\+/g, "\\\\");
-  const cmd = `node ./_script/bookCreator/dist/index.bundle.js ${configPath}`;
+  const cwd = workspace.workspaceFolders[0].uri.path;
+  const scriptPath = path
+    .join(cwd, "./_script/bookCreator/dist/index.bundle.js")
+    .replace(/^\\+/, "");
+
   if (fs.existsSync(configPath)) {
+    const cmd = `node "${scriptPath}" "${configPath}"`;
+    copy(cmd);
     exec(cmd, err => {
       err
-        ? window.showErrorMessage("createJSON: Error")
+        ? window.showErrorMessage(`${err}`)
         : window.showInformationMessage("createJSON: OK");
     });
   } else {
