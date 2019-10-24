@@ -2,12 +2,7 @@ const { window, workspace } = require("vscode");
 const path = require("path");
 const utils = require("./util");
 const fs = require("fs");
-
-const exec = (cmd, name) => {
-  const terminal = window.createTerminal({ name });
-  terminal.show(true);
-  terminal.sendText(cmd);
-};
+const { exec } = require("child_process");
 
 const config = workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
@@ -36,11 +31,16 @@ module.exports = async function(URI) {
 
 async function createIndexFile({ folder }) {
   const CONFIG_NAME = "_config.json";
-  const CMD_NAME = "json-html";
   const configPath = path.join(folder, CONFIG_NAME).replace(/\\+/g, "\\\\");
   const cmd = `node ./_script/bookCreator/dist/index.bundle.js ${configPath}`;
   if (fs.existsSync(configPath)) {
-    exec(cmd, CMD_NAME);
+    exec(cmd, err => {
+      err
+        ? window.showErrorMessage("createJSON: Error")
+        : window.showInformationMessage("createJSON: OK");
+    });
+  } else {
+    window.showErrorMessage("'_config.json' NOT FOUND");
   }
 }
 
