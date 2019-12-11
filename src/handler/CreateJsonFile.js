@@ -8,7 +8,6 @@ const { copy } = require("copy-paste");
 const config = workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
 const jsonName = config.get("jsonName") + ".json";
-
 let result = [];
 
 const uuid = () => {
@@ -53,12 +52,14 @@ async function createIndexFile({ folder }) {
 
 const ignoreReg = new RegExp(jsonIgnore);
 function shouldIgnore(name, isDir) {
-  const a = ignoreReg.test(name);
+  // ignore config file
+  const a = isDir && ignoreReg.test(name);
   const b = name == jsonName;
   const c = name == "node_modules";
-  const d = /^_?index\.html$/.test(name);
-  const e = !isDir && !/\.html$/.test(name);
-  return a || b || c || d || e;
+  // ignore not md file
+  const d = !isDir && !/\.md$/.test(name);
+  const result = a || b || c || d;
+  return result;
 }
 
 function gen(folder, inject) {
@@ -73,7 +74,7 @@ function gen(folder, inject) {
       continue;
     }
 
-    const bundlePath = path.join(filePath, "dist/index.bundle.js");
+    const bundlePath = path.join(filePath, "index.js");
     const isPlain = isDir && fs.existsSync(bundlePath);
 
     const id = uuid();
