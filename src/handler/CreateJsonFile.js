@@ -65,7 +65,7 @@ function shouldIgnore(name, isDir) {
 function gen(folder, inject) {
   const files = fs.readdirSync(folder);
 
-  for (var name of files) {
+  for (let name of files) {
     const filePath = path.join(folder, name);
     const stat = fs.statSync(filePath);
     const isDir = stat.isDirectory();
@@ -73,6 +73,8 @@ function gen(folder, inject) {
     if (shouldIgnore(name, isDir)) {
       continue;
     }
+
+    name = name.replace(/\.md$/, ".html");
 
     const bundlePath = path.join(filePath, "index.js");
     const isPlain = isDir && fs.existsSync(bundlePath);
