@@ -43,7 +43,7 @@
         "liqiang.jsonIgnore": {
           "description": "JSON:忽略文件夹",
           "type": "string",
-          "default": "(src|dist|images?|style|script)"
+          "default": "^(src|dist|images?|style|script)$"
         }
       }
     },
