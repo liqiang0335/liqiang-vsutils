@@ -9,6 +9,7 @@ module.exports = async function(URI) {
   const selectPath = URI
     ? URI.fsPath
     : window.activeTextEditor.document.fileName;
+
   const cwd = workspace.workspaceFolders[0].uri.path;
   const ext = path.extname(selectPath).replace(".", "");
   const handlerName = `ynw-${ext}-factory.js`;
@@ -29,16 +30,3 @@ module.exports = async function(URI) {
     window.showErrorMessage("File-Factory: Not Found!");
   }
 };
-
-// const exec = (cmd, name) => {
-//   const terminal = vscode.window.createTerminal({ name });
-//   terminal.show(true);
-//   terminal.sendText(cmd);
-// };
-
-// if (exist) {
-//   const cmd = `node ${handlerPath} "${util.toWinPath(selectPath)}"`;
-//   exec(cmd, "file-factory");
-// } else {
-//   window.showErrorMessage("File-Factory: Not Found!");
-// }
