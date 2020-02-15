@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -43,7 +43,7 @@
         "liqiang.jsonIgnore": {
           "description": "JSON:忽略文件夹",
           "type": "string",
-          "default": "^(src|dist|images?|style|script)$"
+          "default": "^(src|dist|images?|style|script|components?)$"
         }
       }
     },
@@ -86,10 +86,6 @@
         }
       ],
       "explorer/context": [
-        {
-          "command": "liqiang.fileFactory",
-          "group": "liqiang-@2"
-        },
         {
           "command": "liqiang.createJson",
           "group": "liqiang-@3"
