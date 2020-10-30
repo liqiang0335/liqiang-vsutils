@@ -89,6 +89,10 @@
         {
           "command": "liqiang.createJson",
           "group": "liqiang-@3"
+        },
+        {
+          "command": "liqiang.createWXMFiles",
+          "group": "liqiang-@4"
         }
       ]
     },
