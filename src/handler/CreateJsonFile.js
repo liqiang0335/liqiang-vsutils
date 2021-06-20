@@ -8,15 +8,19 @@ const { copy } = require("copy-paste");
 const config = workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
 const jsonName = config.get("jsonName") + ".json";
+const ignoreReg = new RegExp(jsonIgnore);
 let result = [];
-
 const uuid = () => {
   const now = Date.now();
   const num = Math.floor(Math.random() * 10000 * 1000);
   return `${now}${num}`;
 };
-
-module.exports = async function(URI) {
+/**
+ * ----------------------------------------
+ *
+ * ----------------------------------------
+ */
+module.exports = async function (URI) {
   const filePath = URI.fsPath;
   const stat = await utils.stat(filePath);
   if (!stat.isDirectory()) {
@@ -26,13 +30,19 @@ module.exports = async function(URI) {
   const target = path.join(filePath, jsonName);
   gen(filePath, { rel: "", pid: "0" });
   await utils.writeFile(target, JSON.stringify(result));
-  createIndexFile({ folder: filePath, jsonPath: target });
+  createIndexFile({ folder: filePath });
 };
-
+/**
+ * ----------------------------------------
+ * 执行脚本创建index.html
+ * ----------------------------------------
+ */
 async function createIndexFile({ folder }) {
   const CONFIG_NAME = "_config.json";
   const configPath = path.join(folder, CONFIG_NAME).replace(/\\+/g, "\\\\");
   const cwd = workspace.workspaceFolders[0].uri.path;
+
+  // 执行脚本创建index.html
   const scriptPath = path
     .join(cwd, "./_script/bookCreator/dist/index.bundle.js")
     .replace(/^\\+/, "");
@@ -50,41 +60,62 @@ async function createIndexFile({ folder }) {
   }
 }
 
-const ignoreReg = new RegExp(jsonIgnore);
-function shouldIgnore(name, isDir) {
-  // ignore config file
-  const a = isDir && ignoreReg.test(name);
-  const b = name == jsonName;
-  const c = name == "node_modules";
-  // ignore not md file
-  const d = !isDir && !/\.md$/.test(name);
-  const result = a || b || c || d;
-  return result;
-}
-
+/**
+ * ----------------------------------------
+ *  创建__db__.json
+ * ----------------------------------------
+ */
 function gen(folder, inject) {
   const files = fs.readdirSync(folder);
 
-  for (let name of files) {
-    const filePath = path.join(folder, name);
+  for (let fileName of files) {
+    const filePath = path.join(folder, fileName);
     const stat = fs.statSync(filePath);
     const isDir = stat.isDirectory();
 
-    if (shouldIgnore(name, isDir)) {
+    if (shouldIgnore(fileName, isDir)) {
       continue;
     }
 
-    name = name.replace(/\.md$/, ".html");
-
+    const id = uuid();
     const bundlePath = path.join(filePath, "index.js");
     const isPlain = isDir && fs.existsSync(bundlePath);
+    const name = fileName.replace(/\.md$/, ".html");
+    const basename = fileName.replace(/\.md$/, ""); // 不带拓展名的文件名
 
-    const id = uuid();
-    result.push({ name, id, isDir, ...inject, isPlain, mtime: stat.mtimeMs });
+    const data = {
+      id,
+      name,
+      isDir,
+      isPlain,
+      basename,
+      mtime: stat.mtimeMs,
+      ...inject,
+    };
+
+    // 添加文件夹配置信息
+    if (isDir) {
+      const frc = path.join(filePath, ".frc");
+      if (fs.existsSync(frc)) {
+        data.frc = JSON.parse(fs.readFileSync(frc, "utf-8"));
+      }
+    }
+
+    result.push(data);
     const rel = inject && inject.rel ? `${inject.rel}/${name}` : name;
 
     if (isDir) {
       gen(filePath, { pid: id, rel });
     }
   }
+}
+function shouldIgnore(name, isDir) {
+  // 忽略配置文件
+  const a = isDir && ignoreReg.test(name);
+  const b = name == jsonName;
+  const c = name == "node_modules";
+  // 忽略非MD文件
+  const d = !isDir && !/\.md$/.test(name);
+  const result = Boolean(a || b || c || d);
+  return result;
 }
