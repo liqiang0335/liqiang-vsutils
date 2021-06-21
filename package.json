@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -89,10 +89,6 @@
         {
           "command": "liqiang.createJson",
           "group": "liqiang-@3"
-        },
-        {
-          "command": "liqiang.createWXMFiles",
-          "group": "liqiang-@4"
         }
       ]
     },
