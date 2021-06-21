@@ -93,12 +93,21 @@ function gen(folder, inject) {
       ...inject,
     };
 
-    // 添加文件夹配置信息
     if (isDir) {
-      const frc = path.join(filePath, ".frc");
-      if (fs.existsSync(frc)) {
-        data.frc = JSON.parse(fs.readFileSync(frc, "utf-8"));
+      data.frc = {};
+      // 文件夹配置信息
+      const drc = path.join(filePath, ".drc");
+      if (fs.existsSync(drc)) {
+        data.drc = JSON.parse(fs.readFileSync(drc, "utf-8"));
       }
+    } else {
+      // 文件配置信息
+      data.frc = {};
+      const content = fs.readFileSync(filePath, "utf-8") || "";
+      content.replace(/\(\((\w+):([^\)]+)\)\)/g, (match, m1, m2) => {
+        data.frc[m1] = m2;
+        return "";
+      });
     }
 
     result.push(data);
