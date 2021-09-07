@@ -1,6 +1,4 @@
 const vscode = require("vscode");
-const path = require("path");
-const fs = require("fs");
 const getLocalFile = require("../utils/getLocalFile");
 
 const exec = (cmd, name) => {

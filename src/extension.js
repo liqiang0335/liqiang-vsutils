@@ -4,7 +4,7 @@ const CreateJsonFile = require("./handler/CreateJsonFile");
 const CreateIndexFiles = require("./handler/CreateIndexFiles");
 const CreateWXMFiles = require("./handler/CreateWXMFiles");
 const RemoveBlank = require("./handler/RemoveBlank");
-const HandleFile = require("./handler/HandleFile");
+const FileHandler = require("./handler/FileHandler");
 
 /**
  * activate
@@ -18,7 +18,7 @@ exports.activate = function (context) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("liqiang.fileHandler", HandleFile)
+    vscode.commands.registerCommand("liqiang.fileHandler", FileHandler)
   );
 
   context.subscriptions.push(
