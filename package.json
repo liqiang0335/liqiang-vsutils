@@ -26,6 +26,7 @@
     "onCommand:liqiang.removeBlank",
     "onCommand:liqiang.createJson",
     "onCommand:liqiang.fileFactory",
+    "onCommand:liqiang.fileHandler",
     "onCommand:liqiang.createIndexFiles",
     "onCommand:liqiang.createWXMFiles"
   ],
@@ -77,6 +78,10 @@
       {
         "command": "liqiang.fileFactory",
         "key": "ctrl+y ctrl+c"
+      },
+      {
+        "command": "liqiang.fileHandler",
+        "key": "ctrl+y ctrl+f"
       }
     ],
     "menus": {
