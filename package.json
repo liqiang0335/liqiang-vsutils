@@ -2,11 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "some tool for me",
-<<<<<<< HEAD
-  "version": "0.8.4",
-=======
   "version": "0.8.6",
->>>>>>> 69d6b37f88bce76c19c85241b9fe60e923a5f966
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
