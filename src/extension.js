@@ -4,16 +4,21 @@ const CreateJsonFile = require("./handler/CreateJsonFile");
 const CreateIndexFiles = require("./handler/CreateIndexFiles");
 const CreateWXMFiles = require("./handler/CreateWXMFiles");
 const RemoveBlank = require("./handler/RemoveBlank");
+const HandleFile = require("./handler/HandleFile");
 
 /**
  * activate
  */
-exports.activate = function(context) {
+exports.activate = function (context) {
   context.subscriptions.push(
     vscode.commands.registerCommand("liqiang.removeBlank", RemoveBlank)
   );
   context.subscriptions.push(
     vscode.commands.registerCommand("liqiang.fileFactory", FileFactory)
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("liqiang.fileHandler", HandleFile)
   );
 
   context.subscriptions.push(
@@ -37,4 +42,4 @@ exports.activate = function(context) {
 /**
  * deactivate
  */
-exports.deactivate = function() {};
+exports.deactivate = function () {};
