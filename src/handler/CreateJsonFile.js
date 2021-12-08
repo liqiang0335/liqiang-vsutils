@@ -22,13 +22,14 @@ const uuid = () => {
  */
 module.exports = async function (URI) {
   const filePath = URI.fsPath;
+  const appname = filePath.match(/app-books[/\\]+(\w+)/)[1];
   const stat = await utils.stat(filePath);
   if (!stat.isDirectory()) {
     return;
   }
   result = [];
   const target = path.join(filePath, jsonName);
-  gen(filePath, { rel: "", pid: "0" });
+  gen(filePath, { rel: "", pid: "0", appname });
   await utils.writeFile(target, JSON.stringify(result));
   createIndexFile({ folder: filePath });
 };
@@ -114,7 +115,7 @@ function gen(folder, inject) {
     const rel = inject && inject.rel ? `${inject.rel}/${name}` : name;
 
     if (isDir) {
-      gen(filePath, { pid: id, rel });
+      gen(filePath, { ...inject, pid: id, rel });
     }
   }
 }
