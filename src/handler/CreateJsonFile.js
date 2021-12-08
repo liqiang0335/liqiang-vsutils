@@ -23,7 +23,9 @@ const uuid = () => {
 module.exports = async function (URI) {
   const filePath = URI.fsPath;
   const matchAppName = filePath.match(/app-books[/\\]+(\w+)/);
-  const appname = matchAppName ? matchAppName[1] : filePath;
+  const appname = matchAppName
+    ? matchAppName[1]
+    : "CreateJsonFile:matchAppNameError";
   const stat = await utils.stat(filePath);
   if (!stat.isDirectory()) {
     return;
