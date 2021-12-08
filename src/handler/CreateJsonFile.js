@@ -22,7 +22,8 @@ const uuid = () => {
  */
 module.exports = async function (URI) {
   const filePath = URI.fsPath;
-  const appname = filePath.match(/app-books[/\\]+(\w+)/)[1];
+  const matchAppName = filePath.match(/app-books[/\\]+(\w+)/);
+  const appname = matchAppName ? matchAppName[1] : filePath;
   const stat = await utils.stat(filePath);
   if (!stat.isDirectory()) {
     return;
