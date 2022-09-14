@@ -9,7 +9,7 @@ module.exports = async function (URI) {
 
   const cwd = workspace.workspaceFolders[0].uri.path;
   const ext = path.extname(selectPath).replace(".", "");
-  const handlerName = `ynw-${ext}-factory.js`;
+  const handlerName = `yy-${ext}-factory.js`;
   const handlerPath = path.join(cwd, handlerName).replace(/\\+/g, "\\\\").replace(/^\\+/, "");
   const exist = await util.exists(handlerPath);
 

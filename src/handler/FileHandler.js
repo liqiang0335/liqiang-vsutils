@@ -9,6 +9,6 @@ const exec = (cmd, name) => {
 
 module.exports = function () {
   const active = vscode.window.activeTextEditor.document.fileName;
-  const runFile = getLocalFile("ynw-file-handler.js");
+  const runFile = getLocalFile("yy-file-handler.js");
   exec(`node "${runFile}" "${active}"`, "处理文件");
 };
