@@ -1,7 +1,7 @@
 const path = require("path");
 const utils = require("./util");
 
-module.exports = async function(URI) {
+module.exports = async function (URI) {
   const filePath = URI.fsPath;
 
   const resolve = name => path.join(filePath, name);
