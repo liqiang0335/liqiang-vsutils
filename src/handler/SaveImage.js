@@ -6,10 +6,14 @@ const axios = require("axios");
 const insertContent = require("../utils/insertContent");
 const child_process = require("child_process");
 const scriptPath = path.join(__dirname, "../assets/saveImage.applescript");
-const saveURL = "http://app.jsgaotie.com/api/app/public/mybook/content/image";
+const host = "http://app.jsgaotie.com";
+const saveURL = vscode.workspace.getConfiguration("liqiang").get("saveURL");
 const FormData = require("form-data");
 
 module.exports = function SaveImage() {
+  if (!saveURL) {
+    return vscode.window.showErrorMessage("请设置saveURL参数");
+  }
   const as = child_process.spawn("osascript", [scriptPath]);
   as.on("error", function () {
     vscode.window.showErrorMessage("SaveImage:出错");
@@ -20,12 +24,11 @@ module.exports = function SaveImage() {
       const image = await fs.readFile(output);
       const form = new FormData();
       form.append("file", image, "file.jpg");
-      const res = await axios.post(saveURL, form, {
+      const res = await axios.post(host + saveURL, form, {
         headers: { ...form.getHeaders() },
       });
       const body = res.data;
-      const filePath = body.data;
-      const imagePath = `https://app.jsgaotie.com${filePath}`;
+      const imagePath = host + body.data;
       copy(imagePath);
       insertContent(`![](${imagePath})`);
       vscode.window.showInformationMessage("OK");

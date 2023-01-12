@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "Tools for MySelf",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -46,6 +46,11 @@
           "description": "JSON:忽略文件夹",
           "type": "string",
           "default": "^(src|dist|images?|style|script|components?)$"
+        },
+        "liqiang.saveURL": {
+          "description": "图片上传地址",
+          "type": "string",
+          "default": ""
         }
       }
     },
