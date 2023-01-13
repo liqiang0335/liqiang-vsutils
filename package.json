@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "Tools for MySelf",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -91,7 +91,11 @@
       },
       {
         "command": "liqiang.fileFactory",
-        "key": "ctrl+y ctrl+c"
+        "key": "ctrl+y ctrl+y"
+      },
+      {
+        "command": "liqiang.createJson",
+        "key": "ctrl+g ctrl+g"
       },
       {
         "command": "liqiang.fileHandler",

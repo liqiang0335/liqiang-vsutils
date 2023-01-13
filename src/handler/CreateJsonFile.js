@@ -1,11 +1,11 @@
-const { window, workspace } = require("vscode");
+const vscode = require("vscode");
 const path = require("path");
 const utils = require("./util");
 const fs = require("fs");
 const { exec } = require("child_process");
 const { copy } = require("copy-paste");
 
-const config = workspace.getConfiguration("liqiang");
+const config = vscode.workspace.getConfiguration("liqiang");
 const jsonIgnore = config.get("jsonIgnore");
 const jsonName = config.get("jsonName") + ".json";
 const ignoreReg = new RegExp(jsonIgnore);
@@ -21,46 +21,47 @@ const uuid = () => {
  * ----------------------------------------
  */
 module.exports = async function (URI) {
-  const filePath = URI.fsPath;
+  let filePath = URI?.fsPath || vscode.window.activeTextEditor.document.uri.path;
+  filePath = filePath.replace(/\/pages.+$/, "/pages");
+
   const matchAppName = filePath.match(/app-books[/\\]+(\w+)/);
-  const appname = matchAppName
-    ? matchAppName[1]
-    : "CreateJsonFile:matchAppNameError";
+  if (!matchAppName) {
+    return vscode.window.showErrorMessage("未匹配名称");
+  }
+  const appname = matchAppName[1];
   const stat = await utils.stat(filePath);
   if (!stat.isDirectory()) {
-    return;
+    return vscode.window.showErrorMessage("只能在目录上创建");
   }
   result = [];
   const target = path.join(filePath, jsonName);
   gen(filePath, { rel: "", pid: "0", appname });
   await utils.writeFile(target, JSON.stringify(result));
-  createIndexFile({ folder: filePath });
+  createIndexFile({ folder: filePath, appname });
 };
 /**
  * ----------------------------------------
  * 执行脚本创建index.html
  * ----------------------------------------
  */
-async function createIndexFile({ folder }) {
+async function createIndexFile({ folder, appname }) {
   const CONFIG_NAME = "_config.json";
   const configPath = path.join(folder, CONFIG_NAME).replace(/\\+/g, "\\\\");
-  const cwd = workspace.workspaceFolders[0].uri.path;
+  const cwd = vscode.workspace.workspaceFolders[0].uri.path;
 
   // 执行脚本创建index.html
-  const scriptPath = path
-    .join(cwd, "./_script/bookCreator/dist/index.bundle.js")
-    .replace(/^\\+/, "");
+  const scriptPath = path.join(cwd, "./_script/bookCreator/dist/index.bundle.js").replace(/^\\+/, "");
 
   if (fs.existsSync(configPath)) {
     const cmd = `node "${scriptPath}" "${configPath}"`;
     copy(cmd);
     exec(cmd, err => {
       err
-        ? window.showErrorMessage(`${err}`)
-        : window.showInformationMessage("createJSON: OK");
+        ? vscode.window.showErrorMessage(`${err}`) //
+        : vscode.window.showInformationMessage(`createJSON: ${appname}`);
     });
   } else {
-    window.showErrorMessage("'_config.json' NOT FOUND");
+    vscode.window.showErrorMessage("_config.json不存在");
   }
 }
 
