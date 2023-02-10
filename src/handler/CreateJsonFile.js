@@ -61,13 +61,13 @@ async function createIndexFile({ folder, appname }) {
         : vscode.window.showInformationMessage(`createJSON: ${appname}`);
     });
   } else {
-    vscode.window.showErrorMessage("_config.json不存在");
+    vscode.window.showErrorMessage("config Not Found");
   }
 }
 
 /**
  * ----------------------------------------
- *  创建__db__.json
+ *  create __db__.json
  * ----------------------------------------
  */
 function gen(folder, inject) {

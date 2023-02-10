@@ -6,10 +6,12 @@ const CreateWXMFiles = require("./handler/CreateWXMFiles");
 const RemoveBlank = require("./handler/RemoveBlank");
 const FileHandler = require("./handler/FileHandler");
 const SaveImage = require("./handler/SaveImage");
+const ReplaceModule = require("./handler/ReplaceModule");
 /**
  * activate
  */
 exports.activate = function (context) {
+  context.subscriptions.push(vscode.commands.registerCommand("liqiang.ReplaceModule", ReplaceModule));
   context.subscriptions.push(vscode.commands.registerCommand("liqiang.SaveImage", SaveImage));
   context.subscriptions.push(vscode.commands.registerCommand("liqiang.removeBlank", RemoveBlank));
   context.subscriptions.push(vscode.commands.registerCommand("liqiang.fileFactory", FileFactory));
