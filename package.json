@@ -24,13 +24,7 @@
   ],
   "activationEvents": [
     "onCommand:liqiang.SaveImage",
-    "onCommand:liqiang.ReplaceModule",
-    "onCommand:liqiang.removeBlank",
-    "onCommand:liqiang.createJson",
-    "onCommand:liqiang.fileFactory",
-    "onCommand:liqiang.fileHandler",
-    "onCommand:liqiang.createIndexFiles",
-    "onCommand:liqiang.createWXMFiles"
+    "onCommand:liqiang.ReplaceModule"
   ],
   "main": "./src/extension",
   "contributes": {
