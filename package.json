@@ -79,10 +79,6 @@
       {
         "command": "liqiang.ReplaceModule",
         "key": "cmd+'"
-      },
-      {
-        "command": "liqiang.fileHandler",
-        "key": "ctrl+y ctrl+f"
       }
     ],
     "menus": {
