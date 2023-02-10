@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "Tools for MySelf",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -85,22 +85,6 @@
       {
         "command": "liqiang.ReplaceModule",
         "key": "cmd+'"
-      },
-      {
-        "command": "liqiang.SaveImage",
-        "key": "ctrl+i"
-      },
-      {
-        "command": "liqiang.removeBlank",
-        "key": "ctrl+y ctrl+b"
-      },
-      {
-        "command": "liqiang.fileFactory",
-        "key": "ctrl+y"
-      },
-      {
-        "command": "liqiang.createJson",
-        "key": "ctrl+g"
       },
       {
         "command": "liqiang.fileHandler",
