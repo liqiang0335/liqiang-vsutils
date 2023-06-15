@@ -2,7 +2,6 @@ const vscode = require("vscode");
 const FileFactory = require("./handler/FileFactory");
 const CreateJsonFile = require("./handler/CreateJsonFile");
 const CreateIndexFiles = require("./handler/CreateIndexFiles");
-const CreateWXMFiles = require("./handler/CreateWXMFiles");
 const RemoveBlank = require("./handler/RemoveBlank");
 const FileHandler = require("./handler/FileHandler");
 const SaveImage = require("./handler/SaveImage");
@@ -18,9 +17,6 @@ exports.activate = function (context) {
   context.subscriptions.push(vscode.commands.registerCommand("liqiang.fileHandler", FileHandler));
   context.subscriptions.push(vscode.commands.registerCommand("liqiang.createJson", CreateJsonFile));
   context.subscriptions.push(vscode.commands.registerCommand("liqiang.createIndexFiles", CreateIndexFiles));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.createWXMFiles", CreateWXMFiles));
-
-  ////////////////////// END ///////////////////////
 };
 
 /**

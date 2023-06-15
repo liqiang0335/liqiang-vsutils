@@ -5,7 +5,7 @@ const util = require("util");
 /**
  * Get Relative Path for active
  */
-const getRelativePath = function(selectFilePath, activeFilePath) {
+const getRelativePath = function (selectFilePath, activeFilePath) {
   let relativePath = path
     .relative(activeFilePath, selectFilePath)
     .replace(/\\+/g, "/") //replace sep
@@ -23,9 +23,7 @@ const getRelativePath = function(selectFilePath, activeFilePath) {
 };
 
 //处理window路径
-const toWinPath = p => p.replace(/\\+/g, "\\\\").replace(/^\\+/, "");
-
-////////////////////////////////////////////////////////////
+const toWinPath = (p) => p.replace(/\\+/g, "\\\\").replace(/^\\+/, "");
 
 exports.stat = util.promisify(fs.stat);
 exports.writeFile = util.promisify(fs.writeFile);
