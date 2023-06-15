@@ -10,9 +10,12 @@ const CmdCaller = require("./handler/CmdCaller");
 exports.activate = function (context) {
   const subscriptions = context.subscriptions;
   const commands = vscode.commands;
-  subscriptions.push(commands.registerCommand("liqiang.UserDefined", (URI) => CmdCaller(URI, "UserDefined")));
-  subscriptions.push(commands.registerCommand("liqiang.MarkdownToHTML", (URI) => CmdCaller(URI, "MarkdownToHTML")));
-  subscriptions.push(commands.registerCommand("liqiang.CreateBookJSON", (URI) => CmdCaller(URI, "CreateBookJSON")));
+
+  const CmdCallerItems = ["CopyPathMd5", "SplitBookJSON", "CreateBookJSON", "UserDefined", "MarkdownToHTML"];
+  CmdCallerItems.forEach((item) => {
+    subscriptions.push(commands.registerCommand(`liqiang.${item}`, (URI) => CmdCaller(URI, item)));
+  });
+
   subscriptions.push(commands.registerCommand("liqiang.ReplaceModule", ReplaceModule));
   subscriptions.push(commands.registerCommand("liqiang.SaveImage", SaveImage));
   subscriptions.push(commands.registerCommand("liqiang.removeBlank", RemoveBlank));
