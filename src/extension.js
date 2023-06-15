@@ -1,22 +1,20 @@
 const vscode = require("vscode");
-const FileFactory = require("./handler/FileFactory");
-const CreateJsonFile = require("./handler/CreateJsonFile");
-const CreateIndexFiles = require("./handler/CreateIndexFiles");
 const RemoveBlank = require("./handler/RemoveBlank");
-const FileHandler = require("./handler/FileHandler");
 const SaveImage = require("./handler/SaveImage");
 const ReplaceModule = require("./handler/ReplaceModule");
+const CmdCaller = require("./handler/CmdCaller");
+
 /**
  * activate
  */
 exports.activate = function (context) {
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.ReplaceModule", ReplaceModule));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.SaveImage", SaveImage));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.removeBlank", RemoveBlank));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.fileFactory", FileFactory));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.fileHandler", FileHandler));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.createJson", CreateJsonFile));
-  context.subscriptions.push(vscode.commands.registerCommand("liqiang.createIndexFiles", CreateIndexFiles));
+  const subscriptions = context.subscriptions;
+  const commands = vscode.commands;
+  subscriptions.push(commands.registerCommand("liqiang.MarkdownToHTML", (URI) => CmdCaller(URI, "MarkdownToHTML")));
+  subscriptions.push(commands.registerCommand("liqiang.CreateBookJSON", (URI) => CmdCaller(URI, "CreateBookJSON")));
+  subscriptions.push(commands.registerCommand("liqiang.ReplaceModule", ReplaceModule));
+  subscriptions.push(commands.registerCommand("liqiang.SaveImage", SaveImage));
+  subscriptions.push(commands.registerCommand("liqiang.removeBlank", RemoveBlank));
 };
 
 /**

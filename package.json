@@ -1,8 +1,8 @@
 {
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
-  "description": "Tools for MySelf",
-  "version": "0.12.2",
+  "description": "TOOL FOR SELF",
+  "version": "1.0.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -32,16 +32,6 @@
       "type": "object",
       "title": "liqiang",
       "properties": {
-        "liqiang.jsonName": {
-          "description": "JSON:文件名称",
-          "type": "string",
-          "default": "__db__"
-        },
-        "liqiang.jsonIgnore": {
-          "description": "JSON:忽略文件夹",
-          "type": "string",
-          "default": "^(src|dist|images?|style|script|components?)$"
-        },
         "liqiang.saveURL": {
           "description": "图片上传地址",
           "type": "string",
@@ -55,24 +45,12 @@
         "title": "删除剪贴板字符空格"
       },
       {
-        "command": "liqiang.fileFactory",
-        "title": "加工文件"
+        "command": "liqiang.CreateBookJSON",
+        "title": "CMD: 生成JSON文件"
       },
       {
-        "command": "liqiang.createJson",
-        "title": "生成JSON文件"
-      },
-      {
-        "command": "liqiang.createWXMFiles",
-        "title": "创建小程序文件"
-      },
-      {
-        "command": "liqiang.createIndexFiles",
-        "title": "创建Index文件"
-      },
-      {
-        "command": "liqiang.fileHandler",
-        "title": "文件处理"
+        "command": "liqiang.MarkdownToHTML",
+        "title": "CMD: MD转换HTML"
       }
     ],
     "keybindings": [
@@ -82,15 +60,10 @@
       }
     ],
     "menus": {
-      "editor/context": [
-        {
-          "command": "liqiang.fileFactory"
-        }
-      ],
       "explorer/context": [
         {
-          "command": "liqiang.createJson",
-          "group": "liqiang-@3"
+          "command": "liqiang.CreateBookJSON",
+          "group": "liqiang-@01"
         }
       ]
     },

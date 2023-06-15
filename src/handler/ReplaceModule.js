@@ -18,7 +18,7 @@ module.exports = async function () {
   await vscode.commands.executeCommand("editor.action.deleteLines");
 
   const position = editor.selection.end;
-  editor.edit(editBuilder => {
+  editor.edit((editBuilder) => {
     editBuilder.insert(position, newContent + "\n");
     copy(target);
   });
