@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "TOOL FOR SELF",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -36,6 +36,11 @@
           "description": "图片上传地址",
           "type": "string",
           "default": ""
+        },
+        "liqiang.command": {
+          "description": "用户命令",
+          "type": "string",
+          "default": "common"
         }
       }
     },
@@ -46,11 +51,15 @@
       },
       {
         "command": "liqiang.CreateBookJSON",
-        "title": "CMD: 生成JSON文件"
+        "title": "🚩 生成JSON文件"
       },
       {
         "command": "liqiang.MarkdownToHTML",
-        "title": "CMD: MD转换HTML"
+        "title": "🚩 MD转换HTML"
+      },
+      {
+        "command": "liqiang.UserDefined",
+        "title": "🚩 自定义命令"
       }
     ],
     "keybindings": [
@@ -60,10 +69,19 @@
       }
     ],
     "menus": {
+      "editor/context": [
+        {
+          "command": "liqiang.UserDefined"
+        }
+      ],
       "explorer/context": [
         {
           "command": "liqiang.CreateBookJSON",
           "group": "liqiang-@01"
+        },
+        {
+          "command": "liqiang.UserDefined",
+          "group": "liqiang-@02"
         }
       ]
     },
