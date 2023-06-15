@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "TOOL FOR SELF",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -38,9 +38,18 @@
           "default": ""
         },
         "liqiang.command": {
-          "description": "用户命令",
+          "description": "CMD用户命令",
           "type": "string",
           "default": "common"
+        },
+        "liqiang.runType": {
+          "description": "CMD运行方式",
+          "type": "string",
+          "enum": [
+            "exec",
+            "terminal"
+          ],
+          "default": "exec"
         }
       }
     },
