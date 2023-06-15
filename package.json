@@ -68,7 +68,7 @@
       },
       {
         "command": "liqiang.UserDefined",
-        "title": "🚩 自定义命令"
+        "title": "🚩 运行自定义命令"
       }
     ],
     "keybindings": [
@@ -89,8 +89,12 @@
           "group": "liqiang-@01"
         },
         {
-          "command": "liqiang.UserDefined",
+          "command": "liqiang.MarkdownToHTML",
           "group": "liqiang-@02"
+        },
+        {
+          "command": "liqiang.UserDefined",
+          "group": "liqiang-@03"
         }
       ]
     },
