@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "TOOL FOR SELF",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -72,11 +72,15 @@
       },
       {
         "command": "liqiang.CopyPathMd5",
-        "title": "🚩 复制路径MD5对应数据"
+        "title": "🚩 复制路径MD5"
       },
       {
         "command": "liqiang.SplitBookJSON",
         "title": "🚩 拆分JSON数据"
+      },
+      {
+        "command": "liqiang.CopyRelativePages",
+        "title": "🚩 复制相对Pages路径"
       }
     ],
     "keybindings": [
@@ -111,6 +115,10 @@
         {
           "command": "liqiang.UserDefined",
           "group": "liqiang-@05"
+        },
+        {
+          "command": "liqiang.CopyRelativePages",
+          "group": "liqiang-@06"
         }
       ]
     },

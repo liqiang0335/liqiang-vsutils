@@ -11,7 +11,7 @@ exports.activate = function (context) {
   const subscriptions = context.subscriptions;
   const commands = vscode.commands;
 
-  const CmdCallerItems = ["CopyPathMd5", "SplitBookJSON", "CreateBookJSON", "UserDefined", "MarkdownToHTML"];
+  const CmdCallerItems = ["CopyPathMd5", "CopyRelativePages", "SplitBookJSON", "CreateBookJSON", "UserDefined", "MarkdownToHTML"];
   CmdCallerItems.forEach((item) => {
     subscriptions.push(commands.registerCommand(`liqiang.${item}`, (URI) => CmdCaller(URI, item)));
   });
