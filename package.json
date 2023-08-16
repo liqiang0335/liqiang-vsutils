@@ -2,7 +2,7 @@
   "name": "liqiang-vsutils",
   "displayName": "liqiang-vsutils",
   "description": "TOOL FOR SELF",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "liqiang0335",
   "author": "liqiang0335 <liqiang0335@gmail.com>",
   "bugs": {
@@ -71,6 +71,10 @@
         "title": "🚩 文件处理(用户设置的类型)"
       },
       {
+        "command": "liqiang.HandleClipboard",
+        "title": "🚩 处理剪贴板数据"
+      },
+      {
         "command": "liqiang.CopyPathMd5",
         "title": "🚩 复制路径MD5"
       },
@@ -93,6 +97,9 @@
       "editor/context": [
         {
           "command": "liqiang.UserDefined"
+        },
+        {
+          "command": "liqiang.HandleClipboard"
         }
       ],
       "explorer/context": [
