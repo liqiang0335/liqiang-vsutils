@@ -21,12 +21,12 @@ module.exports = async function (URI) {
       vscode.window.showErrorMessage("未匹配到copytype");
       return;
     }
-    const { copytype, data } = contents;
+    const { copytype } = contents;
     if (!handlers[copytype]) {
       vscode.window.showErrorMessage("未匹配到copytype对应的处理函数: " + copytype);
       return;
     }
-    handlers[copytype](data, ctx);
+    handlers[copytype](contents, ctx);
   } catch (error) {
     vscode.window.showErrorMessage("剪切板中的内容不是JSON格式");
     return;
@@ -34,7 +34,8 @@ module.exports = async function (URI) {
 };
 
 const handlers = {
-  Frame(data, ctx) {
+  Frame(contents, ctx) {
+    const { data, dev } = contents;
     if (!Array.isArray(data) || !data.length) {
       vscode.window.showErrorMessage("data 数组为空");
       return;
@@ -44,10 +45,12 @@ const handlers = {
       const { name, x, y, w, h } = item;
       const size = `${x}-${y}-${w}-${h}`;
       const reg = new RegExp(`<Frame\\s*name="${name}"\\s*size="(.+?)"\\s*>`);
-      const match = fileContent.match(reg);
-      if (!match) {
-        vscode.window.showErrorMessage(`未匹配到${name}对应的Frame`);
-        continue;
+      if (dev) {
+        const match = fileContent.match(reg);
+        if (!match) {
+          vscode.window.showErrorMessage(`未匹配到${name}对应的Frame`);
+          continue;
+        }
       }
       fileContent = fileContent.replace(reg, `<Frame name="${name}" size="${size}">`);
     }
