@@ -44,7 +44,8 @@ const handlers = {
     for (let item of data) {
       const { name, x, y, w, h } = item;
       const size = `${x}-${y}-${w}-${h}`;
-      const reg = new RegExp(`<Frame\\s*name="${name}"\\s*size="(.+?)"\\s*>`);
+      const reg = new RegExp(`<Frame\\s*name="${name}"\\s*size="(.+?)"`);
+      // 如果数据中包含dev字段,显示每个Frame的匹配信息
       if (dev) {
         const match = fileContent.match(reg);
         if (!match) {
@@ -52,7 +53,7 @@ const handlers = {
           continue;
         }
       }
-      fileContent = fileContent.replace(reg, `<Frame name="${name}" size="${size}">`);
+      fileContent = fileContent.replace(reg, `<Frame name="${name}" size="${size}"`);
     }
     fs.writeFileSync(filePath, fileContent);
     vscode.window.showInformationMessage("Frame处理完成");
