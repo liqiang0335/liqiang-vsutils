@@ -68,8 +68,8 @@ const handlers = {
     for (let item of data) {
       const { name, x, y, w, h, r } = item;
       const size = [x, y, w, h, r].join(",");
-      const reg = new RegExp(`<Move\\s*name="${name}"\\s*size="(.+?)"`);
-      fileContent = fileContent.replace(reg, `<Move name="${name}" size="${size}"`);
+      const reg = new RegExp(`yname="${name}"\\s*size="(.+?)"`, "g");
+      fileContent = fileContent.replace(reg, `yname="${name}" size="${size}"`);
     }
     fs.writeFileSync(filePath, fileContent);
     vscode.window.showInformationMessage("Move处理完成");
