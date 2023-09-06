@@ -67,11 +67,11 @@ const handlers = {
     let { filePath, fileContent } = ctx;
     for (let item of data) {
       const { name, x, y, w, h, r } = item;
-      const size = `${x}-${y}-${w}-${h}-${r}`;
+      const size = [x, y, w, h, r].join(",");
       const reg = new RegExp(`<Move\\s*name="${name}"\\s*size="(.+?)"`);
       fileContent = fileContent.replace(reg, `<Move name="${name}" size="${size}"`);
     }
     fs.writeFileSync(filePath, fileContent);
-    vscode.window.showInformationMessage("Frame处理完成");
+    vscode.window.showInformationMessage("Move处理完成");
   },
 };
