@@ -61,8 +61,7 @@ const handlers = {
   Move(contents, ctx) {
     const { data } = contents;
     if (!Array.isArray(data) || !data.length) {
-      vscode.window.showErrorMessage("data 数组为空");
-      return;
+      return vscode.window.showErrorMessage("data 数组为空");
     }
     let { filePath, fileContent } = ctx;
     for (let item of data) {
@@ -72,6 +71,6 @@ const handlers = {
       fileContent = fileContent.replace(reg, `yname="${name}" size="${size}"`);
     }
     fs.writeFileSync(filePath, fileContent);
-    vscode.window.showInformationMessage("Move处理完成");
+    vscode.window.showInformationMessage("Move OK");
   },
 };

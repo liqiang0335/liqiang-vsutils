@@ -4,6 +4,7 @@ const SaveImage = require("./handler/SaveImage");
 const ReplaceModule = require("./handler/ReplaceModule");
 const CmdCaller = require("./handler/CmdCaller");
 const HandleClipboard = require("./handler/HandleClipboard");
+const InsertVariable = require("./handler/InsertVariable");
 
 /**
  * activate
@@ -24,6 +25,7 @@ exports.activate = function (context) {
     subscriptions.push(commands.registerCommand(`liqiang.${item}`, (URI) => CmdCaller(URI, item)));
   });
 
+  subscriptions.push(commands.registerCommand("liqiang.InsertVariable", InsertVariable));
   subscriptions.push(commands.registerCommand("liqiang.HandleClipboard", HandleClipboard));
   subscriptions.push(commands.registerCommand("liqiang.ReplaceModule", ReplaceModule));
   subscriptions.push(commands.registerCommand("liqiang.SaveImage", SaveImage));
