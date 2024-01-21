@@ -7,6 +7,7 @@ const apiUrl = vscode.workspace.getConfiguration("liqiang").get("apiUrl");
 module.exports = async function () {
   const editor = vscode.window.activeTextEditor;
   let clipboardContent = await vscode.env.clipboard.readText();
+
   // 检测剪贴板是否有文字
   if (!clipboardContent) {
     vscode.window.showInformationMessage("剪贴板没有内容");

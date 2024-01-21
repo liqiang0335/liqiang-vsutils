@@ -28,7 +28,7 @@ exports.activate = function (context) {
 
   subscriptions.push(commands.registerCommand("liqiang.BunRunThis", (URI) => BunRunThis(URI, "bun")));
   subscriptions.push(commands.registerCommand("liqiang.NodeRunThis", (URI) => BunRunThis(URI, "node")));
-  subscriptions.push(commands.registerCommand("liqiang.BunRunThis", BunRunThis));
+
   subscriptions.push(commands.registerCommand("liqiang.InsertVariable", InsertVariable));
   subscriptions.push(commands.registerCommand("liqiang.HandleClipboard", HandleClipboard));
   subscriptions.push(commands.registerCommand("liqiang.ReplaceModule", ReplaceModule));

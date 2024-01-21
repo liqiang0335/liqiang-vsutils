@@ -17,7 +17,8 @@ const call_exec = (cmd, Commmand) => {
 };
 
 module.exports = function (URI, Commmand) {
-  let filePath = URI?.fsPath || vscode.window.activeTextEditor.document.uri.path;
+  let filePath = URI ? URI.fsPath : vscode.window.activeTextEditor.document.uri.path;
+
   const handler = getLocalFile("yy-handler.js");
   const config = vscode.workspace.getConfiguration("liqiang");
 
