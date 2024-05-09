@@ -72,10 +72,6 @@
         "title": "插入变量"
       },
       {
-        "command": "liqiang.removeBlank",
-        "title": "删除剪贴板字符空格"
-      },
-      {
         "command": "liqiang.CreateBookJSON",
         "title": "⛹️‍♀️ 生成JSON文件"
       },
@@ -90,18 +86,6 @@
       {
         "command": "liqiang.HandleClipboard",
         "title": "🛼 处理剪贴板数据"
-      },
-      {
-        "command": "liqiang.CopyPathMd5",
-        "title": "🪀 复制路径MD5"
-      },
-      {
-        "command": "liqiang.SplitBookJSON",
-        "title": "🤸🏻 拆分JSON数据"
-      },
-      {
-        "command": "liqiang.CopyRelativePages",
-        "title": "🤽🏼‍♂️ 复制相对Pages路径"
       }
     ],
     "keybindings": [
