@@ -18,7 +18,7 @@ module.exports = async function () {
   const resp = await axios.get(apiUrl + source);
 
   if (!resp.data?.content) {
-    vscode.window.showInformationMessage("请求失败" + url);
+    vscode.window.showInformationMessage("请求失败");
     return;
   }
   let newContent = resp.data.content;
