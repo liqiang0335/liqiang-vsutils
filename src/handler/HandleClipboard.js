@@ -1,10 +1,17 @@
+const path = require("path");
 const vscode = require("vscode");
 const fs = require("fs");
 
 module.exports = async function (URI) {
   let filePath = URI?.fsPath || vscode.window.activeTextEditor.document.uri.path;
   let clipboardContent = await vscode.env.clipboard.readText();
+
+  // 如果是windows系统, 去掉路径前的"/"
+  if (process.platform === "win32") {
+    filePath = filePath.replace(/^\//, "");
+  }
   let fileContent = fs.readFileSync(filePath, "utf-8");
+
   const ctx = {
     filePath,
     fileContent,
